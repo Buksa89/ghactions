@@ -1,0 +1,10 @@
+name: First Workflow
+on: workflow_dispatch # trigger event - manual
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Print greeting
+        run: echo "No elo"
+      - name: Print Goodbay
+        run: echo "Naura"
