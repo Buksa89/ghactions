@@ -17,7 +17,7 @@ jobs:
         id: publish
         # run: find dist/assets/*.js -type f -execdir echo '{}' ';'   # Find filename by bash and print to stdout
         # run: find dist/assets/*.js -type f -execdir echo 'something={}' >> $GITHUB_OUTPUT ';'   # Find filename by bash and save in bash var OR:
-        run: find dist/assets/*.js -type f -execdir echo '::set_output name=something::{}' ';'
+        run: find dist/assets/*.js -type f -execdir echo '::set-output name=something::{}' ';'
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
