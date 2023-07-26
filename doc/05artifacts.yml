@@ -4,8 +4,6 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      script-file: ${{ steps.publish.outputs.something }}
     steps: 
       - name: Get code
         uses: actions/checkout@v3
@@ -13,11 +11,6 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
-      - name: Publish JS filename
-        id: publish
-        # run: find dist/assets/*.js -type f -execdir echo '{}' ';'   # Find filename by bash and print to stdout
-        # run: find dist/assets/*.js -type f -execdir echo 'something={}' >> $GITHUB_OUTPUT ';'   # Find filename by bash and save in bash var OR:
-          run: find dist/assets/*.js -type f -execdir echo '::set_output name=something::{}' ';'
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -35,7 +28,5 @@ jobs:
           name: dist-files
       - name: ls
         run: ls
-      - name: Output_filename
-        run: echo "${{ needs.build.outputs.script-file }}"
       - name: Deploy
         run: echo "Deploying"
