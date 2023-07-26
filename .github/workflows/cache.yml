@@ -1,4 +1,4 @@
-name: Test Project
+name: Cache
 on: push
 
 jobs:
@@ -16,8 +16,8 @@ jobs:
       - name: Publish JS filename
         id: publish
         # run: find dist/assets/*.js -type f -execdir echo '{}' ';'   # Find filename by bash and print to stdout
-        run: find dist/assets/*.js -type f -execdir echo 'something={}' >> $GITHUB_OUTPUT ';'   # Find filename by bash and save as github var var OR:
-        # run: find dist/assets/*.js -type f -execdir echo '::set-output name=something::{}' ';'
+        # run: find dist/assets/*.js -type f -execdir echo 'something={}' >> $GITHUB_OUTPUT ';'   # Find filename by bash and save as github var var OR:
+        run: find dist/assets/*.js -type f -execdir echo '::set-output name=something::{}' ';'  # deprecated, use env please
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
