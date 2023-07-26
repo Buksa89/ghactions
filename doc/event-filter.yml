@@ -1,0 +1,20 @@
+name: Events
+on:
+  pull_request: 
+    types:
+      - opened
+  push:
+    branches:
+      - main
+      - 'dev-*'
+      - 'feat/**' #** allow slashes inside **
+    # paths:
+    paths-ignore:
+      - '.github/workflows/*'
+
+  workflow_dispatch:
+jobs:
+#  [...]
+
+# to skip action:
+#   commit name with end: [skip actions] #https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs
