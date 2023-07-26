@@ -6,4 +6,4 @@ jobs:
     steps: 
       - name: Output GitHub context
         # run: echo "${{ variable_name }}" # print variable
-        run: echo "${{ totoJSON(github) }}" # print github context parsed to json
+        run: echo "${{ toJSON(github) }}" # print github context parsed to json
