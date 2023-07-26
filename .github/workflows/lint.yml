@@ -1,7 +1,7 @@
 name: Lint
 on: workflow_dispatch 
 jobs:
-  ls:
+  lint:
     runs-on: ubuntu-latest
     steps: 
 
@@ -13,8 +13,8 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
-      - name: Run ls
-        run: ls
+      - name: Run lint
+        run: eslint --ext .jsx --fix src
   test:
     runs-on: ubuntu-latest
     steps: 
