@@ -2,7 +2,7 @@ name: Test Project
 on: workflow_dispatch
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps: 
       - name: Get code
@@ -18,5 +18,11 @@ jobs:
           path: |           # for send multiple files, normal can be string
             dist          
             package.json
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
       - name: Deploy
         run: echo "Deploying"
