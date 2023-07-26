@@ -1,14 +1,24 @@
-name: First Workflow
-on: workflow_dispatch # trigger event - manual
+name: Test Project
+# on: workflow_dispatch # trigger event - manual , other described: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+on: push
 jobs:
-  first-job:
+  test:
     runs-on: ubuntu-latest
     steps: 
-      - name: Print greeting
-        run: echo "No elo"
-      - name: Print Goodbay
-        run: echo "Naura"
-      - name: Multiline
-        run: |
-            echo "First output"
-            echo "Second output"
+#       - name: Print greeting
+#         run: echo "No elo"      # komenda bashowa
+#       - name: Multiline         # komenda bashowa multiline
+#         run: |
+#             echo "First output"
+#             echo "Second output"
+      - name: Get code
+        uses: actions/checkout@v3 #         action defined in github
+        #with: # arguments passed to action (depends from action)
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
