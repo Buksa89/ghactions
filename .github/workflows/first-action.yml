@@ -1,6 +1,6 @@
 name: Test Project
 # on: workflow_dispatch # trigger event - manual , other described: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
-on: push
+on: push # can be more in list: [push, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
