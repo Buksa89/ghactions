@@ -14,7 +14,7 @@ jobs:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != true     
+        if: steps.cache.outputs.cache-hit != 'true' 
         # do only if no cache
         run: |
           echo "${{steps.cache.outputs.cache-hit}}"
