@@ -6,11 +6,17 @@ on:
 
 jobs:
   pyjob:
-    # env:
-    #   MONGODB_CLUISTER_ADRESS:
+    env:
+      myenv: "myenv_var"
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: run_script
-        run: "python my.py"
+      - name: echo myenv
+        run: echo "$myenv" #OR
+      - name: echo myenv from env
+        run: echo "${{env.myenv}}"
+      - name: echo all envs
+        run: echo "${{env}}"
+      # - name: run_script
+      #   run: python my.py
