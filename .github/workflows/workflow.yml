@@ -1,4 +1,5 @@
 # Contexts: https://docs.github.com/en/actions/learn-github-actions/contexts
+# Expressions: https://docs.github.com/en/actions/learn-github-actions/expressions
 name: Deployment
 on:
   push
@@ -16,5 +17,6 @@ jobs:
       - name: Deploy
         run: echo "deploy" 
       - name: Report
-        if: steps.run_script.outcome == 'failure' # condition
+        if: failure() && steps.run_script.outcome == 'failure' 
+       # condition
         run: echo "report" 
