@@ -1,0 +1,17 @@
+name: Deployment
+on:
+  push
+jobs:
+  pyjob:
+    env:
+      myenv: ${{ secrets.SECRET_NAME }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: run_script
+        run: python my.py 
+      - name: Report
+        run: echo "report" 
+      - name: Deploy
+        run: echo "deploy" 
