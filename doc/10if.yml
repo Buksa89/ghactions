@@ -1,0 +1,29 @@
+# Contexts: https://docs.github.com/en/actions/learn-github-actions/contexts
+# Expressions: https://docs.github.com/en/actions/learn-github-actions/expressions
+name: Deployment
+on:
+  push
+jobs:
+  pyjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Run script
+        id: run_script  #id added
+        run: python my.py 
+      - name: Deploy
+        run: echo "deploy" 
+      - name: Report
+        if: failure() && steps.run_script.outcome == 'failure' 
+       # condition
+        run: echo "report" 
+
+  report_job:
+    needs: pyjob
+    # Job will be triggered only if something failure
+    if: failure()             
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report job
+        run: echo "report job" 
