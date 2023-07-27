@@ -1,8 +1,8 @@
 name: Deployment
 on:
   push
-# env:
-#   MONGODB_DB_NAME: gha-demo #set env
+env:
+  MONGODB_DB_NAME: gha-demo # can be setted for all envs
 
 jobs:
   pyjob:
