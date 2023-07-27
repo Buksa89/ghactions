@@ -17,8 +17,6 @@ jobs:
         if: steps.cache.outputs.cache-hit != true     
         # do only if no cache
         run: npm ci
-      - name: Build project
-        run: npm run build
   deploy:
     needs: build
     runs-on: ubuntu-latest
