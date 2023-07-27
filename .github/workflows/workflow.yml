@@ -20,6 +20,7 @@ jobs:
         run: echo "report" 
 
   report_job:
+    needs: pyjob
     if: failure()
     runs-on: ubuntu-latest
     steps:
