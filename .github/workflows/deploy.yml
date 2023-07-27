@@ -17,6 +17,6 @@ jobs:
       - name: echo myenv from env
         run: echo "${{env.myenv}}"
       - name: echo all envs
-        run: echo "${{env}}"
+        run: echo "toJSON(${{env}})"
       # - name: run_script
       #   run: python my.py
