@@ -1,0 +1,22 @@
+# default envs: https://docs.github.com/en/actions/learn-github-actions/variables#default-environment-variables
+name: Deployment
+on:
+  push
+env:
+  MONGODB_DB_NAME: gha-demo # can be setted for all envs
+jobs:
+  pyjob:
+    env:
+      myenv: "myenv_var"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: echo myenv
+        run: echo "$myenv" #OR
+      - name: echo myenv from env
+        run: echo "${{env.myenv}}"
+      - name: echo all envs
+        run: echo "${{ toJSON(env)}}"
+      - name: run_script
+        run: python my.py
