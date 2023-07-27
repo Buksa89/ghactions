@@ -1,5 +1,5 @@
 import os
 
-USER = os.getenv('API_USER')
+USER = os.getenv('myenv')
 
 print(USER)
