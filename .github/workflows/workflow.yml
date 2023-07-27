@@ -1,3 +1,4 @@
+# Contexts: https://docs.github.com/en/actions/learn-github-actions/contexts
 name: Deployment
 on:
   push
@@ -9,9 +10,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: run_script
+      - name: Run script
+        id: run_script  #id added
         run: python my.py 
-      - name: Report
-        run: echo "report" 
       - name: Deploy
         run: echo "deploy" 
+      - name: Report
+        if: steps.run_script.outcome == 'failure' # condition
+        run: echo "report" 
