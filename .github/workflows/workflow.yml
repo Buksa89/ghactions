@@ -16,11 +16,13 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != true     
         # do only if no cache
-        run: npm ci
+        run: |
+          echo "${{steps.cache.outputs.cache-hit}}"
+          npm ci
+        
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps: 
       - name: Deploy
         run: echo "Deploying"
-        
