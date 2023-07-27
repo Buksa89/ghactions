@@ -5,8 +5,6 @@ on:
   push
 jobs:
   pyjob:
-    env:
-      myenv: ${{ secrets.SECRET_NAME }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -20,3 +18,10 @@ jobs:
         if: failure() && steps.run_script.outcome == 'failure' 
        # condition
         run: echo "report" 
+
+  report_job:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report job
+        run: echo "report job" 
