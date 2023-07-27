@@ -10,5 +10,7 @@ jobs:
     #   MONGODB_CLUISTER_ADRESS:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/checkout@v3
       - name: run_script
         run: "python my.py"
