@@ -1,0 +1,14 @@
+name: Deployment
+on:
+  push
+# env:
+#   MONGODB_DB_NAME: gha-demo #set env
+
+jobs:
+  pyjob:
+    # env:
+    #   MONGODB_CLUISTER_ADRESS:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run_script
+        run: "python my.py"
