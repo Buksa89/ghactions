@@ -1,0 +1,23 @@
+# name: Test Project
+# on: workflow_call
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps: 
+#       - name: Get code
+#         uses: actions/checkout@v3
+#       - name: Run
+#         run: python my.py
+
+
+
+name: Test Project
+on: workflow_call
+jobs:
+  deploy:
+    uses: ./.github/workflows/name_of_first_workflow_file.yml
+  report:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Deploy
+        run: echo "Deploying"
