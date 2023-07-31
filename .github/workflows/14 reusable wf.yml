@@ -12,7 +12,7 @@
 
 
 name: Test Project
-on: workflow_call
+on: push
 jobs:
   deploy:
     uses: ./.github/workflows/name_of_first_workflow_file.yml
