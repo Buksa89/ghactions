@@ -8,6 +8,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Run
+        continue-on-error: true
         run: python my.py
         
   deploy:
