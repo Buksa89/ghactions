@@ -16,9 +16,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true' 
         # do only if no cache
-        run: |
-          echo "${{steps.cache.outputs.cache-hit}}"
-          npm ci
+        run: npm ci
         
   deploy:
     needs: build
