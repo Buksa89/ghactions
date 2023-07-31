@@ -1,0 +1,21 @@
+name: Test Project
+on: push
+
+jobs:
+  build:
+    strategy: # define matrix
+      matrix:
+        node-version: [12,13,14]
+        operating-system: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.operating-system }} # parallell run
+    steps: 
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Run
+        run: python my.py ${{ matrix.node-version }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Deploy
+        run: echo "Deploying"

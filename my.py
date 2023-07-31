@@ -1,1 +1,2 @@
-print("python run")gffg
+import sys
+print(sys.argv[1])

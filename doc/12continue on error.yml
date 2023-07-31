@@ -8,7 +8,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Run
-        continue-on-error: true
+        continue-on-error: true # continue https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context - outcome description
         run: python my.py
         
   deploy:
